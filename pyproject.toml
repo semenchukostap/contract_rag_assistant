@@ -1,0 +1,48 @@
+[project]
+name = "contract-rag-assistant"
+version = "0.1.0"
+description = "A RAG-based contract question answering assistant"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain>=0.1.0",
+    "langchain-core>=1.2.0",
+    "langchain-classic>=1.0.0",
+    "langchain-text-splitters>=1.1.0",
+    "langchain-openai>=1.1.3",
+    "langchain-community>=0.4.1",
+    "openai",
+    "faiss-cpu",
+    "pdfplumber",
+    "streamlit",
+    "tiktoken",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:.*SwigPyPacked.*:DeprecationWarning",
+    "ignore:.*SwigPyObject.*:DeprecationWarning",
+    "ignore:.*swigvarlink.*:DeprecationWarning",
+]
